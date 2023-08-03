@@ -20,19 +20,43 @@
     // element.textContent = 'Hello World' // 💰 in React, you set this with the "children" prop
     // element.className = 'container' // 💰 in React, this is also called the "className" prop
 
-    const el = React.createElement('div', {
-      children: "Hello World",
-      className: "container",
-    })
+    // const el = React.createElement('div', {
+    //   children: "Hello World",
+    //   className: "container",
+    // })
 
     // This is similar to ReactDOM.createRoot().render()
     // rootElement.append(element)
 
-    const root = ReactDOM.createRoot(rootElement)
-    root.render(el)
+    // const root = ReactDOM.createRoot(rootElement)
+    // root.render(el)
 
     // 🐨 Please re-implement the regular document.createElement code above
     // with these React API calls
     // 💰 The example in the markdown file should be a good hint for you.
+
+    // <body>
+    //   <div id="root">
+    //     <div class="container">
+    //       <span>Hello</span>
+    //       <span>World</span>
+    //     </div>
+    //   </div>
+    // </body>
+
+    const hello = React.createElement('span', {
+      children: "Hello"
+    })
+
+    const world = React.createElement('span', {
+      children: "World"
+    })
+
+    const el = React.createElement('div', {
+      className: "container",
+    }, hello, " ", world)
+
+    const root = ReactDOM.createRoot(rootElement)
+    root.render(el)
   </script>
 </body>
