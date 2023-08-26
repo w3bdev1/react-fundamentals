@@ -11,16 +11,35 @@
 
     // 🐨 use that function in place of the divs below with:
     // 💰 {message({children: 'Hello World'})} {message({children: 'Goodbye World'})}
+
+    function Message({ subject, greeting }) {
+      return (
+        <div className="message">
+          {greeting}, {subject}
+        </div>
+      )
+    }
+
+    const PropTypes = {
+      string(props, propName, componentName) {
+        const type = typeof props[propName]
+        if (type !== 'string') {
+          return new Error(`In component "${componentName}" prop "${propName}" expects "string" but found "${type}"`)
+        }
+      },
+    }
+
+    Message.propTypes = {
+      subject: PropTypes.string,
+      greeting: PropTypes.string,
+    }
+
     const element = (
       <div className="container">
-        <Message>Hello World</Message>
-        <Message>Goodbye World</Message>
+        <Message greeting="Hello" subject={12} />
+        <Message subject="World" />
       </div>
     )
-
-    function Message({ children }) {
-      return <div className="message">{children}</div>
-    }
 
     // 💯 This is only the first step to making actual React components. The rest is in the extra credit!
     ReactDOM.createRoot(document.getElementById('root')).render(element)
